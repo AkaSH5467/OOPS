@@ -12,6 +12,7 @@ class Hero{
     public:
     char *name;
     int level;
+    static int time;
 
     //Default Constructor
     Hero(){
@@ -82,11 +83,15 @@ class Hero{
         cout<<endl;
 
     }
+    static int random()
+    {
+        return time;
+    }
 
     
 };
 
-
+int Hero::time=5;
 int main()
 {
     /*Hero h1;
@@ -141,6 +146,7 @@ h1.name[0]='G';
 h1.print();
 hero2.print();
 
-
+cout<<Hero::time<<endl;   //static function
+cout<<Hero::random()<<endl; // static members
 
 }
