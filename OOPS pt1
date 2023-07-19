@@ -1,0 +1,146 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+class Hero{
+
+    //properties
+    private:
+     int health;
+
+
+    public:
+    char *name;
+    int level;
+
+    //Default Constructor
+    Hero(){
+        cout<<"HeHe"<<endl;
+        name = new char[100];
+        health=0;
+        level=0;
+        
+    }
+
+    //Parameterized Constructor
+    Hero(int level,int health)
+    {
+        this->health=health;
+        this->level=level;
+    }
+
+    //Copy Constructor
+    Hero(Hero& temp)
+    {
+       char *ch = new char[strlen(temp.name)+1];
+        strcpy(ch,temp.name);
+        this->name=ch;                     //deep copy (copying the same name to different address)
+         this->health=temp.health;
+        this->level=temp.level;
+
+    } 
+    
+
+    //Destructor
+    ~Hero(){
+        cout<<"Bye Bye Blyat"<<endl;
+    }
+
+
+//Member Functions
+    void sethealth(int h)  //setter
+    {
+        health=h;
+    }
+
+    void setlevel(int l) //setter
+    {
+        level=l;
+    }
+
+    void setname(char name[])
+    {
+        strcpy(this->name,name);
+    }
+
+    int gethealth() //getter
+    {
+        
+      return health;
+    }
+
+    int getlevel() //getter
+    {
+        return level;
+    }
+
+    void print()
+    {
+        cout<<"[Name is "<<this->name<<" , ";
+        cout<<"health is "<<this->health<<" , ";
+        cout<<"level is "<<this->level<<" ]";
+        cout<<endl;
+
+    }
+
+    
+};
+
+
+int main()
+{
+    /*Hero h1;
+    cout<<"Size : "<<sizeof(h1)<<endl;
+    //h1.setdata();
+    cout<<"Health is : "<<h1.gethealth();
+    //cout<<"Level : "<<h1.level<<endl;*/
+
+/*
+    //static Allocation
+    Hero h1;
+    h1.sethealth(30);
+    cout<<"Health is "<<h1.gethealth()<<endl;
+
+
+    //dynamic Allocation
+    Hero *h2 = new Hero;
+    (*h2).sethealth(23);
+    cout<<"Health is "<<(*h2).gethealth()<<endl;
+*/
+
+
+/*
+//call default
+Hero h1;
+cout<<h1.gethealth()<<endl;;
+cout<<h1.getlevel()<<endl;
+
+//call parameterized
+Hero h2(10,20);
+cout<<h2.gethealth()<<endl;;
+cout<<h2.getlevel()<<endl;
+
+//call Copy
+Hero h3(h2);
+cout<<h3.gethealth()<<endl;
+cout<<h3.getlevel()<<endl;*/
+
+Hero h1(50,40);
+char name[6]="Akash";
+h1.setname(name);
+h1.gethealth();
+h1.getlevel();
+h1.print();
+
+
+Hero hero2(h1);
+hero2.print();
+
+
+h1.name[0]='G';
+h1.print();
+hero2.print();
+
+
+
+}
